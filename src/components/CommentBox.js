@@ -9,8 +9,7 @@ class CommentBox extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.comment );
-    // Call an action creator
+    // TODO Call an action creator
 
     // And save the comment
 
@@ -22,7 +21,10 @@ class CommentBox extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h4>Add a Comment</h4>
-        <textarea onChange={this.handleChange} value={this.state.comment} />
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.comment}
+        />
         <div>
           <button>Submit Comment</button>
         </div>
