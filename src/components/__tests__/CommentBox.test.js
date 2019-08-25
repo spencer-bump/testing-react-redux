@@ -1,16 +1,16 @@
 import React from 'react';
-// should use shallow because it is
-// a simple component
-// import { shallow } from 'enzyme';
-
 import { mount } from 'enzyme';
 import CommentBox from '../CommentBox';
+import Root from '../../Root';
 
 let wrapped;
 
 beforeEach(() => {
-  // FULL DOM rendering with enzyme
-  wrapped = mount(<CommentBox />);
+  wrapped = mount(
+    <Root>
+      <CommentBox />
+    </Root>
+  );
 });
 
 afterEach(() => {
