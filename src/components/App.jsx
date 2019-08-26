@@ -8,5 +8,5 @@ export default () => {
       <CommentBox />
       <CommentList />
     </div>
-  )
+  );
 };
