@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import requireAuth from './requireAuth';
+import requireAuth from './requireAuth.jsx';
 
 class CommentBox extends Component {
   state = { comment: ''};
@@ -37,10 +37,8 @@ class CommentBox extends Component {
   };
 };
 
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-}
+// THe connect tag takes the action creators
+// and passes them as props down to CommentBox
+// Route also passes props down props.history
 
-export default connect(mapStateToProps, actions)(requireAuth(CommentBox));
+export default connect(null, actions)(requireAuth(CommentBox));
