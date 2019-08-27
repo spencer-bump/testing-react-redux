@@ -5,16 +5,30 @@ import * as actions from '../actions';
 class CommentBox extends Component {
   state = { comment: ''};
 
+  // runs when component is rendered
+  componentDidMount() {
+    this.checkAuthentication();
+  }
+
+  // runs when component is updated
+  componentDidUpdate() {
+    this.checkAuthentication();
+  }
+
+  checkAuthentication() {
+    if (!this.props.auth) {
+      this.props.history.push('/');
+    }
+  }
+
   handleChange = event => {
     this.setState({ comment: event.target.value });
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    // TODO Call an action creator
-    // And save the comment
+    // Call action creator and save the comment
     this.props.saveComment(this.state.comment);
-
     // clear the comment field
     this.setState({ comment: ''});
   }
@@ -38,4 +52,10 @@ class CommentBox extends Component {
   };
 };
 
-export default connect(null, actions)(CommentBox);
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+}
+
+export default connect(mapStateToProps, actions)(CommentBox);
